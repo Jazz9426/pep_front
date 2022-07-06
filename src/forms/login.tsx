@@ -62,8 +62,7 @@ export default function Login({changeUser} : {changeUser: (jwt: string, userId :
                 <a href="/register" className="text-secondary">Pas encore de compte ? Se créer un compte</a>
 
                 <div className="d-grid gap-2 mt-3">
-                <button onTouchStart={submitForm} onClick={submitFormClick}>Click me</button>
-                <Button type="submit" style={{cursor: "pointer"}} className="btn btn-primary" onTouchStart={submitForm} onClick={submitFormClick}>
+                    <Button type="submit" style={{cursor: "pointer"}} className="btn btn-primary" onTouchStart={submitForm} onClick={submitFormClick}>
                         Connexion
                     </Button>
                 </div>

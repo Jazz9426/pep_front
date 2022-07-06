@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router';
 import { User } from './interfaces/User.interface';
 import { faCirclePlus, faQrcode } from '@fortawesome/free-solid-svg-icons';
 
-export default function NavbarComponent({connected, user, disconnect} : {connected: boolean, user: User|null, disconnect : () => void}) {
+export default function NavbarComponent({connected, activePage, user, disconnect} : {connected: boolean, activePage : string, user: User|null, disconnect : () => void}) {
     
     let navigate = useNavigate()
     let profile 
@@ -18,6 +18,8 @@ export default function NavbarComponent({connected, user, disconnect} : {connect
         profile = <Nav.Link href="/login">Se connecter</Nav.Link>
     }
 
+    console.log("path : ", activePage)
+
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Container>
@@ -25,9 +27,9 @@ export default function NavbarComponent({connected, user, disconnect} : {connect
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/" className='text-light bg-dark'>Accueil</Nav.Link>
-              <Nav.Link href="/pet">Mes animaux</Nav.Link>
-              <Nav.Link href="/registerPet" > <FontAwesomeIcon icon={faCirclePlus} /> Ajouter un animal</Nav.Link>
+              <Nav.Link href="/" className={'bg-dark' + (activePage == "/" ? " text-light" : "")}>Accueil</Nav.Link>
+              <Nav.Link href="/pet" className={activePage == "/pet" ? "text-light" : ""}>Mes animaux</Nav.Link>
+              <Nav.Link href="/registerPet" className={activePage == "/registerPet" ? "text-light" : ""} > <FontAwesomeIcon icon={faCirclePlus} /> Ajouter un animal</Nav.Link>
               
             </Nav>
             <Nav>
