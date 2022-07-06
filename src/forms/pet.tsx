@@ -8,12 +8,14 @@ import ModifyPet from "./modifyPet";
 import { faPaw } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { API_URL } from '../constants';
+import LoginModal from "./loginModal";
 
 
 export default function PetComponent ({connected, user, jwt} : {connected: boolean, user: User|null, jwt : string}){
   const [petList, setPetList] = useState<Pet[]>([])
   const [loaded, setLoaded] = useState(false)
   const [editedPet, setEditedPet] = useState<Pet|null>(null)
+  const [showLoginModal, setShowLoginModal] = useState(false);
   let navigate = useNavigate();
   
   function refreshList(){
@@ -23,8 +25,9 @@ export default function PetComponent ({connected, user, jwt} : {connected: boole
   }
 
   useEffect(() => {
-    if ( user === null){
-      navigate("/")
+    if ( jwt === ""){
+        setShowLoginModal(true)
+      
     }
     return () => {}
   })
@@ -71,6 +74,7 @@ export default function PetComponent ({connected, user, jwt} : {connected: boole
       <ModifyPet refreshList={refreshList} userId={user ? user.id : -1} jwt={jwt} pet={editedPet} closeModal={() => {
         setEditedPet(null)
       } }/>
+      <LoginModal show={showLoginModal} />
     </Container>
   )
 }

@@ -4,6 +4,7 @@ import {Button, Form, Container} from "react-bootstrap";
 import {useNavigate} from "react-router";
 import { User } from "../interfaces/User.interface";
 import { API_URL } from '../constants';
+import LoginModal from "./loginModal";
 
 function sendRegisterPetRequest (name : string, age : string, address : string, phoneNumber: string, clinicNumber : string, description : string, tag : string, jwt : string) {
     return Axios.post(`${API_URL}/pet`, {name, age, address, phoneNumber, clinicNumber, description, tag,},{
@@ -20,11 +21,13 @@ export default function RegisterPet({user,jwt} : {user : User|null , jwt : strin
     const [clinicNumber, setClinicNumber] = useState("");
     const [description, setDescription] = useState("");
     const [tag, setTag] = useState("");
+    const [showLoginModal, setShowLoginModal] = useState(false);
     let navigate = useNavigate();
 
     useEffect(() => {
-        if ( user === null){
-          navigate("/")
+        if ( jwt === ""){
+            setShowLoginModal(true)
+          
         }
         return () => {}
       })
@@ -138,6 +141,7 @@ export default function RegisterPet({user,jwt} : {user : User|null , jwt : strin
                     </Button>
                 </div>
             </Form>
+            <LoginModal show={showLoginModal} />
         </Container>
     );
 }

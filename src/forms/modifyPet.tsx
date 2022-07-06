@@ -6,6 +6,8 @@ import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router';
 import { Pet } from '../interfaces/Pet.interface';
 import { API_URL } from '../constants';
+import { faPaw } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 export default function ModifyPet ({userId, jwt, pet, closeModal, refreshList} : {userId : number, jwt : string, pet : Pet|null, closeModal : () => void, refreshList : () => void}) {
@@ -74,7 +76,7 @@ export default function ModifyPet ({userId, jwt, pet, closeModal, refreshList} :
         
         <Modal show={true} onHide={closeModal}>
           <Modal.Header closeButton>
-            <Modal.Title>{pet.name}</Modal.Title>
+            <Modal.Title> <FontAwesomeIcon icon={faPaw} />{pet.name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>

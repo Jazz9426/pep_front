@@ -50,7 +50,7 @@ export default function Login({changeUser} : {changeUser: (jwt: string, userId :
                     <Form.Control
                         required
                         type="password"
-                        placeholder="password"
+                        placeholder="mot de passe"
                         autoFocus
                         value={password}
                         onChange={(e) => {
