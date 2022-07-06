@@ -23,7 +23,7 @@ export default function NavbarComponent({connected, activePage, user, disconnect
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Container>
-          <Navbar.Brand href="/"> <FontAwesomeIcon icon={faQrcode}/> QR-Pets</Navbar.Brand>
+          <Navbar.Brand href="/"> <FontAwesomeIcon icon={faQrcode}/> QR-Pets |</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">

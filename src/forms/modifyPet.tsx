@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export default function ModifyPet ({userId, jwt, pet, closeModal, refreshList} : {userId : number, jwt : string, pet : Pet|null, closeModal : () => void, refreshList : () => void}) {
     const [id, setId] = useState(0);
     const [name, setName] = useState("");
-    const [age, setAge] = useState(0);
+    const [birth, setBirth] = useState(new Date());
     const [address, setAddress] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [clinicNumber, setClinicNumber] = useState("");
@@ -23,7 +23,7 @@ export default function ModifyPet ({userId, jwt, pet, closeModal, refreshList} :
 
     function updatePet () {
         Axios.put(`${API_URL}/pet?id=` + id, 
-            {name : name, age : age, address : address, phoneNumber : phoneNumber, clinicNumber : clinicNumber, description : description, tag : tag},
+            {name : name, birth : birth, address : address, phoneNumber : phoneNumber, clinicNumber : clinicNumber, description : description, tag : tag},
             {
                 headers: {
                   'authorization': jwt
@@ -63,7 +63,7 @@ export default function ModifyPet ({userId, jwt, pet, closeModal, refreshList} :
         if (id !== pet.id) {
             setId(pet.id)
             setName(pet.name)
-            setAge(pet.age)
+            setBirth(new Date(pet.birth))
             setAddress(pet.address)
             setPhoneNumber(pet.phoneNumber)
             setClinicNumber(pet.clinicNumber)
@@ -71,12 +71,13 @@ export default function ModifyPet ({userId, jwt, pet, closeModal, refreshList} :
             setTag(pet.tag)
         }
 
+        console.log(typeof birth)
     
     return (   
         
         <Modal show={true} onHide={closeModal}>
           <Modal.Header closeButton>
-            <Modal.Title> <FontAwesomeIcon icon={faPaw} />{pet.name}</Modal.Title>
+            <Modal.Title> <FontAwesomeIcon icon={faPaw} /> {pet.name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>
@@ -94,16 +95,16 @@ export default function ModifyPet ({userId, jwt, pet, closeModal, refreshList} :
                         />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="upload_form">
-                        <Form.Label>Âge de l'animal</Form.Label>
+                        <Form.Label>Date de naissance de l'animal</Form.Label>
                         <Form.Control
                             required
-                            type="double"
-                            placeholder="âge"
+                            type="date"
+                            placeholder="jj/mm/aaaa"
                             autoFocus
-                            value={age ?? ""}
+                            value={birth.toLocaleDateString('en-CA')}
                             onChange={(e) => {
-                                let numb = parseInt(e.target.value)
-                                setAge(isNaN(numb) ? 0 : numb);
+                                console.log("here")
+                                setBirth(new Date(e.target.value));
                             }}
                         />
                 </Form.Group>

@@ -7,8 +7,12 @@ import { Container, Card, Button } from "react-bootstrap";
 import ModifyPet from "./modifyPet";
 import { faPaw } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { API_URL } from '../constants';
+import { API_URL, FRONT_URL } from '../constants';
 import LoginModal from "./loginModal";
+import moment from 'moment'
+import formatElapsedTime from "../utils/formatElapsedTime";
+
+
 
 
 export default function PetComponent ({connected, user, jwt} : {connected: boolean, user: User|null, jwt : string}){
@@ -48,15 +52,23 @@ export default function PetComponent ({connected, user, jwt} : {connected: boole
   }
   return(
     <Container className="p-3">
-      <div className="justify-content-xs-center row justify-content-md-start d-flex card-group">
+      <div className="row d-flex card-group">
       {
         petList.map ((element : Pet, index : number) => (
-          <Card key={index} className="mt-3 mx-2 px-3 col-xs-10 col-md-6 rounded" bg="secondary">
+          <div className="col-xs-12 col-md-4 py-3">
+          <Card key={index} className="mt-3 mx-2 h-100" bg="secondary">
             
             <Card.Body>
-              <Card.Title> <FontAwesomeIcon icon={faPaw} /> {element.name} </Card.Title>
+              <Card.Title> 
+                <FontAwesomeIcon icon={faPaw} /> 
+                {element.name} <span style={{fontSize: 12}}>- {formatElapsedTime(new Date(element.birth))}</span>
+              </Card.Title>
               <Card.Text>
-                {element.description} 
+              <p>Adresse du domicile de l'animal : {element.address}</p>
+              <p>Numéro de téléphone du propriétaire : {element.phoneNumber}</p>
+              <p>Numéro de la clinique vétérinaire : {element.clinicNumber}</p>
+              <p>Tatouage / Puce : {element.tag}</p>
+              <p>{element.description}</p>
               </Card.Text>
             </Card.Body>
             <Card.Footer className="row d-flex align-items-center">
@@ -64,10 +76,11 @@ export default function PetComponent ({connected, user, jwt} : {connected: boole
                 <Button variant="primary" onClick={() => {setEditedPet(element)}}>Informations</Button>
               </div>
               <div className="col-6 d-flex justify-content-end">
-                <img src={`https://api.qrserver.com/v1/create-qr-code/?size=50x50&data=${API_URL}/${user ? user.id : -1}/${element.id}`} />
+                <img src={`https://api.qrserver.com/v1/create-qr-code/?size=50x50&data=${FRONT_URL}/${user ? user.id : -1}/${element.id}`} />
               </div>            
             </Card.Footer>
           </Card>
+          </div>
         ))
       }
       </div>

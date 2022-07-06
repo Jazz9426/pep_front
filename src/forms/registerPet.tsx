@@ -6,8 +6,8 @@ import { User } from "../interfaces/User.interface";
 import { API_URL } from '../constants';
 import LoginModal from "./loginModal";
 
-function sendRegisterPetRequest (name : string, age : string, address : string, phoneNumber: string, clinicNumber : string, description : string, tag : string, jwt : string) {
-    return Axios.post(`${API_URL}/pet`, {name, age, address, phoneNumber, clinicNumber, description, tag,},{
+function sendRegisterPetRequest (name : string, birth : Date, address : string, phoneNumber: string, clinicNumber : string, description : string, tag : string, jwt : string) {
+    return Axios.post(`${API_URL}/pet`, {name, birth, address, phoneNumber, clinicNumber, description, tag,},{
     headers: {
         'authorization': jwt
       }})
@@ -15,7 +15,7 @@ function sendRegisterPetRequest (name : string, age : string, address : string, 
 
 export default function RegisterPet({user,jwt} : {user : User|null , jwt : string}) {
     const [name, setName] = useState("");
-    const [age, setAge] = useState("");
+    const [birth, setBirth] = useState(new Date());
     const [address, setAddress] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [clinicNumber, setClinicNumber] = useState("");
@@ -31,6 +31,8 @@ export default function RegisterPet({user,jwt} : {user : User|null , jwt : strin
         }
         return () => {}
       })
+
+      console.log(birth.toLocaleDateString())
 
     return (
         <Container>
@@ -49,15 +51,15 @@ export default function RegisterPet({user,jwt} : {user : User|null , jwt : strin
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="upload_form">
-                    <Form.Label>Âge de l'animal</Form.Label>
+                    <Form.Label>Date de naissance de l'animal</Form.Label>
                     <Form.Control
                         required
-                        type="double"
-                        placeholder="âge"
+                        type="date"
+                        placeholder="aaaa-mm-jj"
                         autoFocus
-                        value={age}
+                        value={birth.toLocaleDateString('en-CA')}
                         onChange={(e) => {
-                            setAge(e.target.value);
+                            setBirth(new Date(e.target.value));
                         }}
                     />
                 </Form.Group>
@@ -130,7 +132,7 @@ export default function RegisterPet({user,jwt} : {user : User|null , jwt : strin
                 <div className="d-grid gap-2 mt-3">
                 <Button type="submit" className="btn btn-primary" onClick={(e) => {
                         e.preventDefault();
-                        sendRegisterPetRequest(name, age, address, phoneNumber, clinicNumber, description, tag, jwt).then(() => {
+                        sendRegisterPetRequest(name, birth, address, phoneNumber, clinicNumber, description, tag, jwt).then(() => {
                             navigate('/pet');
                         })
                         .catch(() => {

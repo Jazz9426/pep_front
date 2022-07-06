@@ -2,7 +2,7 @@ export interface Pet {
     id: number;
     userId: number;
     name: string;
-    age: number;
+    birth: Date;
     address: string;
     phoneNumber: string;
     clinicNumber: string;
