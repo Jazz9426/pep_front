@@ -7,8 +7,6 @@ import Navbar from '../Navbar';
 import { useEffect, useState } from 'react';
 import Axios from 'axios';
 import { User } from '../interfaces/User.interface';
-import { stringify } from 'querystring';
-import { disconnect } from 'process';
 import PetViewer from '../forms/petViewer';
 import { API_URL } from '../constants';
 import Home from '../forms/home';
