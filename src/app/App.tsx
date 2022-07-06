@@ -10,6 +10,7 @@ import { User } from '../interfaces/User.interface';
 import { stringify } from 'querystring';
 import { disconnect } from 'process';
 import PetViewer from '../forms/petViewer';
+import { API_URL } from '../constants';
 
 Axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 
@@ -44,7 +45,7 @@ function App() {
   function retrieveUserInfos(jwt : string, userId : number){
     setJwt(jwt)
     setUserId(userId)
-    Axios.get("http://127.0.0.1:3000/user?id="+ userId, {
+    Axios.get(`${API_URL}/user?id=${userId}`, {
       headers: {
         'authorization': jwt
       }})
@@ -63,6 +64,7 @@ function App() {
       <div>
             <Navbar connected={user!=null} user={user} disconnect={disconnect}/>
             <Routes>
+                <Route path="/" />
                 <Route path="/login" element={<LoginCompenent changeUser={retrieveUserInfos}/>} />
                 <Route path="/register" element={<Register/>} />
                 <Route path="/registerPet" element={<RegisterPet user={user} jwt={jwt}/>}/>

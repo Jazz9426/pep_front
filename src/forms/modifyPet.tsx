@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router';
 import { Pet } from '../interfaces/Pet.interface';
+import { API_URL } from '../constants';
 
 
 export default function ModifyPet ({userId, jwt, pet, closeModal, refreshList} : {userId : number, jwt : string, pet : Pet|null, closeModal : () => void, refreshList : () => void}) {
@@ -19,7 +20,7 @@ export default function ModifyPet ({userId, jwt, pet, closeModal, refreshList} :
     let navigate = useNavigate();
 
     function updatePet () {
-        Axios.put("http://127.0.0.1:3000/pet?id=" + id, 
+        Axios.put(`${API_URL}/pet?id=` + id, 
             {name : name, age : age, address : address, phoneNumber : phoneNumber, clinicNumber : clinicNumber, description : description, tag : tag},
             {
                 headers: {
@@ -39,7 +40,7 @@ export default function ModifyPet ({userId, jwt, pet, closeModal, refreshList} :
     }
 
     function deletePet () {
-        Axios.delete("http://127.0.0.1:3000/pet?id=" + id, {
+        Axios.delete(`${API_URL}/pet?id=` + id, {
                 headers: {
                   'authorization': jwt
                 }
@@ -172,7 +173,7 @@ export default function ModifyPet ({userId, jwt, pet, closeModal, refreshList} :
             </Form>
             
             <div className='text-center'>
-                <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://127.0.0.1:3001/${userId}/${pet.id}`} /> 
+                <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${API_URL}/${userId}/${pet.id}`} /> 
             </div>
 
           </Modal.Body>

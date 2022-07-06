@@ -4,12 +4,13 @@ import { Card } from "react-bootstrap";
 import { useParams } from "react-router";
 import { Pet } from "../interfaces/Pet.interface";
 import { User } from "../interfaces/User.interface";
+import { API_URL } from '../constants';
 
 export default function PetViewer ({user, jwt} : {user: User|null, jwt : string}){
     const  { userId, petId } = useParams();
     const [pet, setPet] = useState<Pet|null>();
 
-    Axios.get("http://127.0.0.1:3000/pet?id="+ petId)
+    Axios.get(`${API_URL}/pet?id=`+ petId)
     .then ((response: any) => {
       setPet(response.data)
     })

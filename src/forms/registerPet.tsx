@@ -3,9 +3,10 @@ import Axios from "axios";
 import {Button, Form, Container} from "react-bootstrap";
 import {useNavigate} from "react-router";
 import { User } from "../interfaces/User.interface";
+import { API_URL } from '../constants';
 
 function sendRegisterPetRequest (name : string, age : string, address : string, phoneNumber: string, clinicNumber : string, description : string, tag : string, jwt : string) {
-    return Axios.post("http://127.0.0.1:3000/pet", {name, age, address, phoneNumber, clinicNumber, description, tag,},{
+    return Axios.post(`${API_URL}/pet`, {name, age, address, phoneNumber, clinicNumber, description, tag,},{
     headers: {
         'authorization': jwt
       }})

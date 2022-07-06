@@ -2,9 +2,10 @@ import React, {useState} from "react";
 import Axios from "axios";
 import {Button, Form, Container} from "react-bootstrap";
 import {useNavigate} from "react-router";
+import { API_URL } from '../constants';
 
 function sendRegisterRequest (firstName : string, lastName : string, email : string, password: string) {
-    return Axios.post("http://127.0.0.1:3000/register", {firstName, lastName, email, password})
+    return Axios.post(`${API_URL}/register`, {firstName, lastName, email, password})
 } 
 
 export default function Register() {
@@ -35,7 +36,7 @@ export default function Register() {
                     <Form.Control
                         required
                         type="password"
-                        placeholder="password"
+                        placeholder="mot de passe"
                         autoFocus
                         value={password}
                         onChange={(e) => {
