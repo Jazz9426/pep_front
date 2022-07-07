@@ -38,7 +38,7 @@ export default function RegisterPet({user,jwt} : {user : User|null , jwt : strin
         <Container>
             <Form className="Auth-form">
                 <Form.Group className="mb-3" controlId="upload_form">
-                    <Form.Label>Nom de l'animal</Form.Label>
+                    <Form.Label className="text-white">Nom de l'animal</Form.Label>
                     <Form.Control
                         required
                         type="text"
@@ -51,7 +51,7 @@ export default function RegisterPet({user,jwt} : {user : User|null , jwt : strin
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="upload_form">
-                    <Form.Label>Date de naissance de l'animal</Form.Label>
+                    <Form.Label className="text-white">Date de naissance de l'animal</Form.Label>
                     <Form.Control
                         required
                         type="date"
@@ -64,7 +64,7 @@ export default function RegisterPet({user,jwt} : {user : User|null , jwt : strin
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="upload_form">
-                    <Form.Label>Adresse du domicile de l'animal</Form.Label>
+                    <Form.Label className="text-white">Adresse du domicile de l'animal</Form.Label>
                     <Form.Control
                         required
                         type="text"
@@ -77,7 +77,7 @@ export default function RegisterPet({user,jwt} : {user : User|null , jwt : strin
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="upload_form">
-                    <Form.Label>Numéro de téléphone du propriétaire</Form.Label>
+                    <Form.Label className="text-white">Numéro de téléphone du propriétaire</Form.Label>
                     <Form.Control
                         required
                         type="text"
@@ -90,7 +90,7 @@ export default function RegisterPet({user,jwt} : {user : User|null , jwt : strin
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="upload_form">
-                    <Form.Label>Numéro de la clinique vétérinaire</Form.Label>
+                    <Form.Label className="text-white">Numéro de la clinique vétérinaire</Form.Label>
                     <Form.Control
                         required
                         type="text"
@@ -103,7 +103,7 @@ export default function RegisterPet({user,jwt} : {user : User|null , jwt : strin
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="upload_form">
-                    <Form.Label>Description / Spécificités</Form.Label>
+                    <Form.Label className="text-white">Description / Spécificités</Form.Label>
                     <Form.Control
                         required
                         type="text"
@@ -116,7 +116,7 @@ export default function RegisterPet({user,jwt} : {user : User|null , jwt : strin
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="upload_form">
-                    <Form.Label>Tatouage / Puce</Form.Label>
+                    <Form.Label className="text-white">Tatouage / Puce</Form.Label>
                     <Form.Control
                         required
                         type="text"

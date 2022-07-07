@@ -33,7 +33,7 @@ export default function Login({changeUser} : {changeUser: (jwt: string, userId :
         <Container>
             <Form className="Auth-form">
                 <Form.Group className="mb-3" controlId="upload_form">
-                    <Form.Label>Email</Form.Label>
+                    <Form.Label className="text-white">Email</Form.Label>
                     <Form.Control
                         required
                         type="text"
@@ -46,7 +46,7 @@ export default function Login({changeUser} : {changeUser: (jwt: string, userId :
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="upload_form">
-                    <Form.Label>Mot de passe</Form.Label>
+                    <Form.Label className="text-white">Mot de passe</Form.Label>
                     <Form.Control
                         required
                         type="password"

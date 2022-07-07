@@ -19,7 +19,7 @@ export default function Register() {
         <Container>
             <Form className="Auth-form">
                 <Form.Group className="mb-3" controlId="upload_form">
-                    <Form.Label>Email</Form.Label>
+                    <Form.Label className="text-white">Email</Form.Label>
                     <Form.Control
                         required
                         type="text"
@@ -32,7 +32,7 @@ export default function Register() {
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="upload_form">
-                    <Form.Label>Mot de passe</Form.Label>
+                    <Form.Label className="text-white">Mot de passe</Form.Label>
                     <Form.Control
                         required
                         type="password"
@@ -45,7 +45,7 @@ export default function Register() {
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="upload_form">
-                    <Form.Label>Prénom</Form.Label>
+                    <Form.Label className="text-white">Prénom</Form.Label>
                     <Form.Control
                         required
                         type="text"
@@ -58,7 +58,7 @@ export default function Register() {
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="upload_form">
-                    <Form.Label>Nom de famille</Form.Label>
+                    <Form.Label className="text-white">Nom de famille</Form.Label>
                     <Form.Control
                         required
                         type="text"
