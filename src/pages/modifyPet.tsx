@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router';
 import { Pet } from '../interfaces/Pet.interface';
-import { API_URL } from '../constants';
+import { API_URL, FRONT_URL } from '../constants';
 import { faCalendarDays, faHouseUser, faPaw, faPhone, faTag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -176,7 +176,7 @@ export default function ModifyPet ({userId, jwt, pet, closeModal, refreshList} :
             </Form>
             
             <div className='text-center'>
-                <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${API_URL}/${userId}/${pet.id}`} /> 
+                <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${FRONT_URL}/${userId}/${pet.id}`} /> 
             </div>
 
           </Modal.Body>
