@@ -1,15 +1,16 @@
-import LoginCompenent from '../forms/login';
-import Register from '../forms/register';
-import RegisterPet from '../forms/registerPet';
-import Pet from '../forms/pet';
+import LoginCompenent from '../pages/login';
+import Register from '../pages/register';
+import RegisterPet from '../pages/registerPet';
+import Pet from '../pages/pet';
 import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from '../Navbar';
 import { useEffect, useState } from 'react';
 import Axios from 'axios';
 import { User } from '../interfaces/User.interface';
-import PetViewer from '../forms/petViewer';
+import PetViewer from '../pages/petViewer';
 import { API_URL } from '../constants';
-import Home from '../forms/home';
+import Home from '../pages/home';
+import NavbarComponent from '../Navbar';
 
 Axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 
@@ -17,11 +18,17 @@ function Page({user, disconnectClbk, component} : {user : User | null, disconnec
   const page = useLocation()
   return (
     <>
-      <Navbar connected={user!=null} activePage={page.pathname} user={user} disconnect={disconnectClbk}/>
-      {component}
+
+        <div className='fond-site'>
+        <Navbar connected={user!=null} activePage={page.pathname} user={user} disconnect={disconnectClbk}/>
+        
+        {component}
+        </div>
+      
     </>
   )
 }
+
 
 function App() {
   const retrievedJWT = window.sessionStorage.getItem("jwt")
@@ -84,4 +91,4 @@ function App() {
 }
 
 
-  export default App;
+export default App;

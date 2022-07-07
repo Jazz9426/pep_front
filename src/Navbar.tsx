@@ -21,6 +21,7 @@ export default function NavbarComponent({connected, activePage, user, disconnect
     console.log("path : ", activePage)
 
     return (
+      <>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Container>
           <Navbar.Brand href="/"> <FontAwesomeIcon icon={faQrcode}/> QR-Pets |</Navbar.Brand>
@@ -38,5 +39,6 @@ export default function NavbarComponent({connected, activePage, user, disconnect
           </Navbar.Collapse>
           </Container>
         </Navbar>
+      </>
     )
 }

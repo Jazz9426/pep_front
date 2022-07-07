@@ -6,7 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router';
 import { Pet } from '../interfaces/Pet.interface';
 import { API_URL } from '../constants';
-import { faPaw } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays, faHouseUser, faPaw, faPhone, faTag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -77,12 +77,12 @@ export default function ModifyPet ({userId, jwt, pet, closeModal, refreshList} :
         
         <Modal show={true} onHide={closeModal}>
           <Modal.Header closeButton>
-            <Modal.Title> <FontAwesomeIcon icon={faPaw} /> {pet.name}</Modal.Title>
+            <Modal.Title> <FontAwesomeIcon icon={faPaw} /> &nbsp; {pet.name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>
                 <Form.Group className="mb-3" controlId="upload_form">
-                        <Form.Label>Nom de l'animal</Form.Label>
+                        <Form.Label> <FontAwesomeIcon icon={faHouseUser} /> &nbsp; Nom de l'animal</Form.Label>
                         <Form.Control
                             required
                             type="text"
@@ -95,7 +95,7 @@ export default function ModifyPet ({userId, jwt, pet, closeModal, refreshList} :
                         />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="upload_form">
-                        <Form.Label>Date de naissance de l'animal</Form.Label>
+                        <Form.Label><FontAwesomeIcon icon={faCalendarDays} />&nbsp; Date de naissance de l'animal</Form.Label>
                         <Form.Control
                             required
                             type="date"
@@ -109,7 +109,7 @@ export default function ModifyPet ({userId, jwt, pet, closeModal, refreshList} :
                         />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="upload_form">
-                        <Form.Label>Adresse du domicile de l'animal</Form.Label>
+                        <Form.Label> <FontAwesomeIcon icon={faHouseUser} />&nbsp; Adresse du domicile de l'animal</Form.Label>
                         <Form.Control
                             required
                             type="text"
@@ -122,7 +122,7 @@ export default function ModifyPet ({userId, jwt, pet, closeModal, refreshList} :
                         />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="upload_form">
-                        <Form.Label>Numéro de téléphone du propriétaire</Form.Label>
+                        <Form.Label><FontAwesomeIcon icon={faPhone} />&nbsp; Numéro de téléphone du propriétaire</Form.Label>
                         <Form.Control
                             required
                             type="text"
@@ -135,7 +135,7 @@ export default function ModifyPet ({userId, jwt, pet, closeModal, refreshList} :
                         />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="upload_form">
-                        <Form.Label>Numéro de la clinique vétérinaire</Form.Label>
+                        <Form.Label><FontAwesomeIcon icon={faPhone} />&nbsp; Numéro de la clinique vétérinaire</Form.Label>
                         <Form.Control
                             required
                             type="text"
@@ -161,7 +161,7 @@ export default function ModifyPet ({userId, jwt, pet, closeModal, refreshList} :
                         />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="upload_form">
-                        <Form.Label>Tatouage / Puce</Form.Label>
+                        <Form.Label><FontAwesomeIcon icon={faTag}/>&nbsp; Tatouage / Puce</Form.Label>
                         <Form.Control
                             required
                             type="text"
